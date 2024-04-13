@@ -1068,7 +1068,7 @@
     <Routine name="motor_testing_instruction"/>
     <LoopInitiator loopType="TrialHandler" name="motor_testing_trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="[{'motor_testing_seq_files': 'sequences/765592_motortesting_sequence_00.csv'}, {'motor_testing_seq_files': 'sequences/765592_motortesting_sequence_01.csv'}, {'motor_testing_seq_files': 'sequences/765592_motortesting_sequence_02.csv'}, {'motor_testing_seq_files': 'sequences/765592_motortesting_sequence_03.csv'}, {'motor_testing_seq_files': 'sequences/765592_motortesting_sequence_04.csv'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'motor_testing_seq_files': 'sequences/833385_motortesting_sequence_00.csv'}, {'motor_testing_seq_files': 'sequences/833385_motortesting_sequence_01.csv'}, {'motor_testing_seq_files': 'sequences/833385_motortesting_sequence_02.csv'}, {'motor_testing_seq_files': 'sequences/833385_motortesting_sequence_03.csv'}, {'motor_testing_seq_files': 'sequences/833385_motortesting_sequence_04.csv'}]" valType="str"/>
       <Param name="conditionsFile" updates="None" val="sequences/motor_testing_sequence_file_list.xlsx" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 11, 2024, at 09:28
+    on April 13, 2024, at 09:42
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -42,7 +42,7 @@ from psychopy.hardware import keyboard
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # Store info about the experiment session
 psychopyVersion = '2023.2.3'
-expName = 'ASRT_motor'  # from the Builder filename that created this script
+expName = 'ASRT_motor_v2'  # from the Builder filename that created this script
 expInfo = {
     'participant': f"{randint(0, 999999):06.0f}",
     'session': '001',
@@ -112,7 +112,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\mypython\\Experiments\\asrt_builder\\ASRT_motor_lastrun.py',
+        originPath='C:\\mypython\\Experiments\\asrt_builder\\ASRT_motor_v2_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -350,14 +350,17 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     number_of_practice_blocks = 5
     number_of_motortesting_blocks = 5
     number_of_percepttesting_blocks = 5
-    answer_directions = np.array(['up', 'right', 'down', 'left'])
+    answer_directions = np.array(['4', '3', '2', '1'])
     
     # Define patterns and corresponding answers
     # These mappings relate pattern IDs to sequences of correct answer indices
     pattern_sequences = {1: [1, 2, 0, 3], 2: [2, 3, 1, 0]}
     pattern_answers_indices = {1: [1, 2, 3, 0], 2: [1, 2, 3, 0]}
-    pattern_answers_directions = {1: ['right', 'down', 'left', 'up'],
-                                  2: ['up', 'right', 'down', 'left']}
+    pattern_answers_directions = \
+    {1:['3','2','1','4'],
+    2:['4','3','2','1']}
+    #{1: ['right', 'down', 'left', 'up'],
+    # 2: ['up', 'right', 'down', 'left']}
     
     # Lists to store filenames of generated sequence files
     learning_sequence_files = []
@@ -407,7 +410,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     # Generate practice sequences
     basic_orientation_indices = [0, 1, 2, 3]  # Basic orientations
     practice_answers_indices = np.array([1, 2, 3, 0])
-    practice_answers_directions = np.array(['right', 'down', 'left', 'up'])
+    #practice_answers_directions = np.array(['right', 'down', 'left', 'up'])
+    practice_answers_directions = np.array(['3', '2', '1', '4'])
     
     practice_sequence = np.tile(basic_orientation_indices, 21)
     practice_sequence = np.append(practice_sequence, np.random.randint(0, 4))  # Ensure 85 trials in total
@@ -441,6 +445,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         'correct_answer_index': initial_random_sequence,
         'correct_answer_direction': initial_random_answers_directions
     })
+    # Convert correct_answer_direction to string
     initial_random_sequence_df.to_csv(f'sequences/{participant_id}_initial_random.csv', index=False)
     
     # Save the filename of the initial random sequence to an Excel file
@@ -537,6 +542,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    correct_key = visual.TextStim(win=win, name='correct_key',
+        text='',
+        font='Open Sans',
+        pos=(0, -8), height=2.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-3.0);
     
     # --- Initialize components for Routine "fixation_practice" ---
     cross = visual.ShapeStim(
@@ -593,6 +605,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    correct_key = visual.TextStim(win=win, name='correct_key',
+        text='',
+        font='Open Sans',
+        pos=(0, -8), height=2.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-3.0);
     
     # --- Initialize components for Routine "fixation_practice" ---
     cross = visual.ShapeStim(
@@ -631,6 +650,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    correct_key = visual.TextStim(win=win, name='correct_key',
+        text='',
+        font='Open Sans',
+        pos=(0, -8), height=2.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-3.0);
     
     # --- Initialize components for Routine "fixation" ---
     cross_2 = visual.ShapeStim(
@@ -678,6 +704,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    correct_key = visual.TextStim(win=win, name='correct_key',
+        text='',
+        font='Open Sans',
+        pos=(0, -8), height=2.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-3.0);
     
     # --- Initialize components for Routine "fixation" ---
     cross_2 = visual.ShapeStim(
@@ -725,6 +758,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    correct_key = visual.TextStim(win=win, name='correct_key',
+        text='',
+        font='Open Sans',
+        pos=(0, -8), height=2.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-3.0);
     
     # --- Initialize components for Routine "fixation" ---
     cross_2 = visual.ShapeStim(
@@ -861,7 +901,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             win.callOnFlip(welcome_end.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(welcome_end.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if welcome_end.status == STARTED and not waitOnFlip:
-            theseKeys = welcome_end.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+            theseKeys = welcome_end.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
             _welcome_end_allKeys.extend(theseKeys)
             if len(_welcome_end_allKeys):
                 welcome_end.keys = _welcome_end_allKeys[-1].name  # just the last key pressed
@@ -1032,8 +1072,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             key_resp.keys = []
             key_resp.rt = []
             _key_resp_allKeys = []
+            correct_key.setText(correct_answer_direction)
             # keep track of which components have finished
-            trialComponents = [arrowhead, key_resp]
+            trialComponents = [arrowhead, key_resp, correct_key]
             for thisComponent in trialComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -1095,7 +1136,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                     win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
                 if key_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = key_resp.getKeys(keyList=['left','right','up','down'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = key_resp.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                     _key_resp_allKeys.extend(theseKeys)
                     if len(_key_resp_allKeys):
                         key_resp.keys = _key_resp_allKeys[0].name  # just the first key pressed
@@ -1108,6 +1149,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             key_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *correct_key* updates
+                
+                # if correct_key is starting this frame...
+                if correct_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    correct_key.frameNStart = frameN  # exact frame index
+                    correct_key.tStart = t  # local t and not account for scr refresh
+                    correct_key.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(correct_key, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'correct_key.started')
+                    # update status
+                    correct_key.status = STARTED
+                    correct_key.setAutoDraw(True)
+                
+                # if correct_key is active this frame...
+                if correct_key.status == STARTED:
+                    # update params
+                    pass
+                
+                # if correct_key is stopping this frame...
+                if correct_key.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > correct_key.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        correct_key.tStop = t  # not accounting for scr refresh
+                        correct_key.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'correct_key.stopped')
+                        # update status
+                        correct_key.status = FINISHED
+                        correct_key.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1157,11 +1231,12 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             thisExp.addData('fixation_practice.started', globalClock.getTime())
             # Run 'Begin Routine' code from feedback_code
-            if key_resp.keys == correct_answer_direction:
-                feedbackstr ="正確"
+            if key_resp.keys == str(correct_answer_direction):
+                feedbackstr = f"正確 {key_resp.keys} {correct_answer_direction}"
                 bkCorrectNum += 1
             else:
-                feedbackstr = "錯誤"
+                feedbackstr = f"錯誤 {key_resp.keys} {correct_answer_direction}"
+                #feedbackstr = f"{type(key_resp.keys)} {type(correct_answer_direction)}"
                 
             
             bkRT.append(key_resp.rt)
@@ -1295,6 +1370,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('post_section.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((bkNum < 5 ) and (bkNum % 5 != 0 ) )
         # Run 'Begin Routine' code from performance_post_section
         if len(bkRT) < 1:
             bkRT.append(0)
@@ -1380,7 +1457,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 win.callOnFlip(key_resp_4.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp_4.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_4.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+                theseKeys = key_resp_4.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                 _key_resp_4_allKeys.extend(theseKeys)
                 if len(_key_resp_4_allKeys):
                     key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
@@ -1694,8 +1771,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             key_resp.keys = []
             key_resp.rt = []
             _key_resp_allKeys = []
+            correct_key.setText(correct_answer_direction)
             # keep track of which components have finished
-            trialComponents = [arrowhead, key_resp]
+            trialComponents = [arrowhead, key_resp, correct_key]
             for thisComponent in trialComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -1757,7 +1835,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                     win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
                 if key_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = key_resp.getKeys(keyList=['left','right','up','down'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = key_resp.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                     _key_resp_allKeys.extend(theseKeys)
                     if len(_key_resp_allKeys):
                         key_resp.keys = _key_resp_allKeys[0].name  # just the first key pressed
@@ -1770,6 +1848,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             key_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *correct_key* updates
+                
+                # if correct_key is starting this frame...
+                if correct_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    correct_key.frameNStart = frameN  # exact frame index
+                    correct_key.tStart = t  # local t and not account for scr refresh
+                    correct_key.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(correct_key, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'correct_key.started')
+                    # update status
+                    correct_key.status = STARTED
+                    correct_key.setAutoDraw(True)
+                
+                # if correct_key is active this frame...
+                if correct_key.status == STARTED:
+                    # update params
+                    pass
+                
+                # if correct_key is stopping this frame...
+                if correct_key.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > correct_key.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        correct_key.tStop = t  # not accounting for scr refresh
+                        correct_key.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'correct_key.stopped')
+                        # update status
+                        correct_key.status = FINISHED
+                        correct_key.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1819,11 +1930,12 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             thisExp.addData('fixation_practice.started', globalClock.getTime())
             # Run 'Begin Routine' code from feedback_code
-            if key_resp.keys == correct_answer_direction:
-                feedbackstr ="正確"
+            if key_resp.keys == str(correct_answer_direction):
+                feedbackstr = f"正確 {key_resp.keys} {correct_answer_direction}"
                 bkCorrectNum += 1
             else:
-                feedbackstr = "錯誤"
+                feedbackstr = f"錯誤 {key_resp.keys} {correct_answer_direction}"
+                #feedbackstr = f"{type(key_resp.keys)} {type(correct_answer_direction)}"
                 
             
             bkRT.append(key_resp.rt)
@@ -1957,6 +2069,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('post_section.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((bkNum < 5 ) and (bkNum % 5 != 0 ) )
         # Run 'Begin Routine' code from performance_post_section
         if len(bkRT) < 1:
             bkRT.append(0)
@@ -2042,7 +2156,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 win.callOnFlip(key_resp_4.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp_4.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_4.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+                theseKeys = key_resp_4.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                 _key_resp_4_allKeys.extend(theseKeys)
                 if len(_key_resp_4_allKeys):
                     key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
@@ -2219,8 +2333,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             key_resp.keys = []
             key_resp.rt = []
             _key_resp_allKeys = []
+            correct_key.setText(correct_answer_direction)
             # keep track of which components have finished
-            trialComponents = [arrowhead, key_resp]
+            trialComponents = [arrowhead, key_resp, correct_key]
             for thisComponent in trialComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -2282,7 +2397,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                     win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
                 if key_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = key_resp.getKeys(keyList=['left','right','up','down'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = key_resp.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                     _key_resp_allKeys.extend(theseKeys)
                     if len(_key_resp_allKeys):
                         key_resp.keys = _key_resp_allKeys[0].name  # just the first key pressed
@@ -2295,6 +2410,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             key_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *correct_key* updates
+                
+                # if correct_key is starting this frame...
+                if correct_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    correct_key.frameNStart = frameN  # exact frame index
+                    correct_key.tStart = t  # local t and not account for scr refresh
+                    correct_key.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(correct_key, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'correct_key.started')
+                    # update status
+                    correct_key.status = STARTED
+                    correct_key.setAutoDraw(True)
+                
+                # if correct_key is active this frame...
+                if correct_key.status == STARTED:
+                    # update params
+                    pass
+                
+                # if correct_key is stopping this frame...
+                if correct_key.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > correct_key.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        correct_key.tStop = t  # not accounting for scr refresh
+                        correct_key.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'correct_key.stopped')
+                        # update status
+                        correct_key.status = FINISHED
+                        correct_key.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -2448,6 +2596,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('post_section.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((bkNum < 5 ) and (bkNum % 5 != 0 ) )
         # Run 'Begin Routine' code from performance_post_section
         if len(bkRT) < 1:
             bkRT.append(0)
@@ -2533,7 +2683,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 win.callOnFlip(key_resp_4.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp_4.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_4.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+                theseKeys = key_resp_4.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                 _key_resp_4_allKeys.extend(theseKeys)
                 if len(_key_resp_4_allKeys):
                     key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
@@ -2676,7 +2826,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             win.callOnFlip(key_resp_3.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_resp_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_resp_3.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp_3.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+            theseKeys = key_resp_3.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
             _key_resp_3_allKeys.extend(theseKeys)
             if len(_key_resp_3_allKeys):
                 key_resp_3.keys = _key_resp_3_allKeys[-1].name  # just the last key pressed
@@ -2847,8 +2997,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             key_resp.keys = []
             key_resp.rt = []
             _key_resp_allKeys = []
+            correct_key.setText(correct_answer_direction)
             # keep track of which components have finished
-            trialComponents = [arrowhead, key_resp]
+            trialComponents = [arrowhead, key_resp, correct_key]
             for thisComponent in trialComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -2910,7 +3061,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                     win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
                 if key_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = key_resp.getKeys(keyList=['left','right','up','down'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = key_resp.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                     _key_resp_allKeys.extend(theseKeys)
                     if len(_key_resp_allKeys):
                         key_resp.keys = _key_resp_allKeys[0].name  # just the first key pressed
@@ -2923,6 +3074,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             key_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *correct_key* updates
+                
+                # if correct_key is starting this frame...
+                if correct_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    correct_key.frameNStart = frameN  # exact frame index
+                    correct_key.tStart = t  # local t and not account for scr refresh
+                    correct_key.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(correct_key, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'correct_key.started')
+                    # update status
+                    correct_key.status = STARTED
+                    correct_key.setAutoDraw(True)
+                
+                # if correct_key is active this frame...
+                if correct_key.status == STARTED:
+                    # update params
+                    pass
+                
+                # if correct_key is stopping this frame...
+                if correct_key.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > correct_key.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        correct_key.tStop = t  # not accounting for scr refresh
+                        correct_key.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'correct_key.stopped')
+                        # update status
+                        correct_key.status = FINISHED
+                        correct_key.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3076,6 +3260,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('post_section.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((bkNum < 5 ) and (bkNum % 5 != 0 ) )
         # Run 'Begin Routine' code from performance_post_section
         if len(bkRT) < 1:
             bkRT.append(0)
@@ -3161,7 +3347,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 win.callOnFlip(key_resp_4.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp_4.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_4.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+                theseKeys = key_resp_4.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                 _key_resp_4_allKeys.extend(theseKeys)
                 if len(_key_resp_4_allKeys):
                     key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
@@ -3289,7 +3475,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             win.callOnFlip(key_resp_5.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_resp_5.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_resp_5.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp_5.getKeys(keyList=['y','n','left','right','space'], ignoreKeys=["escape"], waitRelease=False)
+            theseKeys = key_resp_5.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
             _key_resp_5_allKeys.extend(theseKeys)
             if len(_key_resp_5_allKeys):
                 key_resp_5.keys = _key_resp_5_allKeys[-1].name  # just the last key pressed
@@ -3480,8 +3666,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             key_resp.keys = []
             key_resp.rt = []
             _key_resp_allKeys = []
+            correct_key.setText(correct_answer_direction)
             # keep track of which components have finished
-            trialComponents = [arrowhead, key_resp]
+            trialComponents = [arrowhead, key_resp, correct_key]
             for thisComponent in trialComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -3543,7 +3730,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                     win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
                 if key_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = key_resp.getKeys(keyList=['left','right','up','down'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = key_resp.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                     _key_resp_allKeys.extend(theseKeys)
                     if len(_key_resp_allKeys):
                         key_resp.keys = _key_resp_allKeys[0].name  # just the first key pressed
@@ -3556,6 +3743,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             key_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *correct_key* updates
+                
+                # if correct_key is starting this frame...
+                if correct_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    correct_key.frameNStart = frameN  # exact frame index
+                    correct_key.tStart = t  # local t and not account for scr refresh
+                    correct_key.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(correct_key, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'correct_key.started')
+                    # update status
+                    correct_key.status = STARTED
+                    correct_key.setAutoDraw(True)
+                
+                # if correct_key is active this frame...
+                if correct_key.status == STARTED:
+                    # update params
+                    pass
+                
+                # if correct_key is stopping this frame...
+                if correct_key.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > correct_key.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        correct_key.tStop = t  # not accounting for scr refresh
+                        correct_key.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'correct_key.stopped')
+                        # update status
+                        correct_key.status = FINISHED
+                        correct_key.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3709,6 +3929,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('post_section.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((bkNum < 5 ) and (bkNum % 5 != 0 ) )
         # Run 'Begin Routine' code from performance_post_section
         if len(bkRT) < 1:
             bkRT.append(0)
@@ -3794,7 +4016,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 win.callOnFlip(key_resp_4.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if key_resp_4.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_4.getKeys(keyList=['space', 'up','left', 'down', 'right'], ignoreKeys=["escape"], waitRelease=False)
+                theseKeys = key_resp_4.getKeys(keyList=['1','2','3','4','space'], ignoreKeys=["escape"], waitRelease=False)
                 _key_resp_4_allKeys.extend(theseKeys)
                 if len(_key_resp_4_allKeys):
                     key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
